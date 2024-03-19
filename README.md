@@ -4,7 +4,8 @@
 - configured TailwindCSS
 - Header
 - Routing of App
-- Login form (Sign in/Sign up)
+- Login page 
+- Add Sign in/Sign up form
 - Form validation
 - useRef
 - Firebase setup
@@ -14,6 +15,20 @@
 - Created redux store w user slice
 - Implemented sign out
 - Update Profile
+- BugFix: sign up user displayName and profile picture update
+- BugFix: If the user is not logged in redirect /browse to Login page & vice versa
+- Unsubsribed to the onAuthStateChanged callback
+- Register to TMDB API, create an app & get an access token
+- Get data from TMDB Now playing movies list API
+- Custom hook for now playing movies
+- Create movieSlice
+- Update store with now playing movies data
+- Planning for main container and secondary container
+- Fetch data for trailer video
+- Custom hook for movie trailer video
+- Update store with movie trailer video data
+- Embedded the YouTube video and make it autoplay and mute
+- Tailwind classes to make main container look awesome
 
 # Features
 

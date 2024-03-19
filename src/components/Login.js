@@ -41,7 +41,6 @@ const Login = () => {
                 .then((userCredential) => {
                     // Signed up 
                     const user = userCredential.user;
-                    console.log(user);
                     updateProfile(user, {
                         displayName: name.current.value, photoURL: USER_AVATAR
                     }).then(() => {
@@ -49,7 +48,7 @@ const Login = () => {
                         navigate("/browse");
                         dispatch(addUser({ uid: auth.currentUser.uid, email: auth.currentUser.email, displayName: auth.currentUser.displayName, photoURL: auth.currentUser.photoURL }));
                     }).catch((error) => {
-                        console.log("Update error", error);
+                        console.error("Update error", error);
                         alert(error.errorCode + "\n" + error.errorMessage);
                     });
                 })
@@ -62,8 +61,6 @@ const Login = () => {
             signInWithEmailAndPassword(auth, email.current.value, password.current.value)
                 .then((userCredential) => {
                     // Signed in 
-                    const user = userCredential.user;
-                    console.log(user);
                     navigate("/browse");
                 })
                 .catch((error) => {
@@ -74,12 +71,12 @@ const Login = () => {
         }
     }
     return (
-        <div className='h-[100dvh] bg-black bg-opacity-60 object-contain'>
+        <div className='min-h-[100dvh] py-20 bg-black bg-opacity-60 object-contain'>
             <img src={BG_IMG} alt='bg'
-                className='fixed h-full w-full object-cover -z-10' />
+                className='fixed top-0 h-full w-full object-cover -z-10' />
             <Header />
             <form onSubmit={(e) => e.preventDefault()}
-                className='bg-black bg-opacity-60 flex flex-col gap-5 text-white p-16 box-content w-72 mx-auto my-20 rounded-lg'>
+                className='bg-black bg-opacity-60 flex flex-col gap-5 text-white p-16 box-content w-72 mx-auto rounded-lg'>
                 <h1 className='text-3xl font-bold pb-8'>{isSignIn ? "Sign In" : "Sign Up"}</h1>
                 {!isSignIn &&
                     <div className='relative'>

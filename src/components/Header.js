@@ -1,24 +1,36 @@
-import React, { useState } from 'react';
-import { signOut } from 'firebase/auth';
+import React, { useState, useEffect } from 'react';
+import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../utils/firebase';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { LOGO, USER_AVATAR } from '../utils/constants';
+import { addUser, removeUser } from "../utils/userSlice";
+import DropdownMenu from './DropdownMenu';
 
 const Header = () => {
     const [isVisible, setIsVisible] = useState(false);
     const navigate = useNavigate();
     const user = useSelector(store => store.user);
 
-    const handleSignOut = () => {
-        signOut(auth).then(() => {
-            navigate("/");
-        }).catch((error) => {
-            navigate("/error");
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        let unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                navigate("/browse");
+                const { uid, email, displayName, photoURL } = user;
+                dispatch(addUser({ uid: uid, email: email, displayName: displayName, photoURL: photoURL }));
+            } else {
+                navigate("/");
+                dispatch(removeUser());
+            }
         });
-    }
+
+        return () => unsubscribe();
+    }, []);
+
     return (
-        <div className='px-16 flex justify-between items-center'>
+        <div className='fixed top-0 px-16 flex justify-between items-center w-full bg-gradient-to-b from-black z-10'>
             <img src={LOGO} alt='logo'
                 className='w-40' />
             {user &&
@@ -28,17 +40,7 @@ const Header = () => {
                         tabIndex={0}
                         onClick={() => setIsVisible(!isVisible)}
                         onBlur={() => setIsVisible(false)} />
-                    {isVisible &&
-                        <div className='menu bg-black text-white text-xs flex flex-col absolute w-44 right-0 top-10'
-                            onMouseDown={(e) => e.preventDefault()}>
-                            <div className='flex flex-col py-1'>
-                                <div className='py-2 px-4 hover:underline cursor-pointer text-nowrap'>Account</div>
-                                <div className='py-2 px-4 hover:underline cursor-pointer text-nowrap'>Help center</div>
-                            </div>
-                            <div className='py-2 px-2 hover:underline cursor-pointer text-nowrap text-center border-zinc-500 border-t-2'
-                                onClick={() => handleSignOut()}>Sign out of Netflix</div>
-                        </div>
-                    }
+                    {isVisible && <DropdownMenu />}
                 </div>
             }
         </div>
