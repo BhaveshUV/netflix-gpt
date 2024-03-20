@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.movieList::-webkit-scrollbar {
+    height: 0px;
+}
