@@ -25,3 +25,9 @@ export const TOP_RATED_MOVIES = "https://api.themoviedb.org/3/movie/top_rated?la
 export const UPCOMING_MOVIES = 'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1';
 
 export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w300/";
+
+export const SUPPORTED_LANGUAGES = [
+    {identifer: "en", name: "English"},
+    {identifer: "hindi", name: "Hindi"},
+    {identifer: "spanish", name: "Spanish"},
+]

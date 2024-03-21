@@ -35,6 +35,9 @@
 - TMDB Img CDN Url
 - Use Tailwind css to make UI beautiful
 - Create custom hooks to fetch each movieList
+- GPT Search page
+- GPT Searchbar
+- (BONUS) Multi-language support in GPT Search
 
 # Features
 
