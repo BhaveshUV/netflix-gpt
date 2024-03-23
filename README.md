@@ -45,6 +45,7 @@
 - Reuse MovieList component to display the different movies in GPT page
 - Add .env file
 - Add .env file to .gitignore 
+- Memoize the api calls
 
 # Features
 
