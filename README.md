@@ -38,6 +38,13 @@
 - GPT Search page
 - GPT Searchbar
 - (BONUS) Multi-language support in GPT Search
+- Get OpenAI API key
+- Get Movies from GPT api from GPT search bar
+- Fetch individual movies from TMDB API using movieNames received from GPT API
+- Store these TMDB-fetched movies in gpt slice of store
+- Reuse MovieList component to display the different movies in GPT page
+- Add .env file
+- Add .env file to .gitignore 
 
 # Features
 
