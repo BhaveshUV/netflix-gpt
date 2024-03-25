@@ -8,16 +8,15 @@ const useNowPlayingMovies = () => {
     const nowPlayingMovies = useSelector(store => store.movies.nowPlayingMovies);
     const dispatch = useDispatch();
 
-    const getNowPlayingMovies = async () => {
-        const data = await fetch(NOW_PLAYING_MOVIESLIST, API_OPTIONS);
-        const json = await data.json();
-        
-        dispatch(addNowPlayingMovies(json.results));
-    }
-
     useEffect(() => {
-        if(!nowPlayingMovies) getNowPlayingMovies();
-    }, []);
+        const getNowPlayingMovies = async () => {
+            const data = await fetch(NOW_PLAYING_MOVIESLIST, API_OPTIONS);
+            const json = await data.json();
+
+            dispatch(addNowPlayingMovies(json.results));
+        }
+        if (!nowPlayingMovies) getNowPlayingMovies();
+    }, [nowPlayingMovies, dispatch]);
 }
 
 export default useNowPlayingMovies;

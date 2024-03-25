@@ -30,7 +30,7 @@ const Header = () => {
         });
 
         return () => unsubscribe();
-    }, []);
+    }, [navigate, dispatch]);
 
     return (
         <div className='bg-black px-[10%] pb-3 flex justify-between items-center w-full z-10 flex-col md:flex-row fixed top-0 md:bg-gradient-to-b md:from-black md:pb-0 md:bg-transparent'>

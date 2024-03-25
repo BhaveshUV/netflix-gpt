@@ -7,15 +7,14 @@ const useTopRatedMovies = () => {
     const topRatedMovies = useSelector(store => store.movies.topRatedMovies);
     let dispatch = useDispatch();
 
-    const getTopRatedMovies = async () => {
-        const data = await fetch(TOP_RATED_MOVIES, API_OPTIONS);
-        const json = await data.json();
-        dispatch(addTopRatedMovies(json.results));
-    }
-
     useEffect(() => {
-        if(!topRatedMovies) getTopRatedMovies();
-    }, []);
+        const getTopRatedMovies = async () => {
+            const data = await fetch(TOP_RATED_MOVIES, API_OPTIONS);
+            const json = await data.json();
+            dispatch(addTopRatedMovies(json.results));
+        }
+        if (!topRatedMovies) getTopRatedMovies();
+    }, [topRatedMovies, dispatch]);
 }
 
 export default useTopRatedMovies;

@@ -7,15 +7,14 @@ const usePopularMovies = () => {
     const popularMovies = useSelector(store => store.movies.popularMovies);
     let dispatch = useDispatch();
 
-    const getPopularMovies = async () => {
-        const data = await fetch(POPULAR_MOVIES, API_OPTIONS);
-        const json = await data.json();
-        dispatch(addPopularMovies(json.results));
-    }
-
     useEffect(() => {
-        if(!popularMovies) getPopularMovies();
-    }, []);
+        const getPopularMovies = async () => {
+            const data = await fetch(POPULAR_MOVIES, API_OPTIONS);
+            const json = await data.json();
+            dispatch(addPopularMovies(json.results));
+        }
+        if (!popularMovies) getPopularMovies();
+    }, [popularMovies, dispatch]);
 }
 
 export default usePopularMovies;
