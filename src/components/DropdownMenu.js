@@ -13,9 +13,9 @@ const DropdownMenu = () => {
     };
 
     return (
-        <div className='menu bg-black text-white text-xs flex flex-col absolute w-44 right-0 top-11'
+        <div className='menu text-white text-xs flex flex-col w-44 bg-neutral-800 fixed right-4 md:absolute md:right-0 md:top-11 md:bg-black'
             onMouseDown={(e) => e.preventDefault()}>
-            <div className='absolute h-3 w-3 bg-black right-[11px] -top-1 rotate-45'></div>
+            <div className='absolute h-3 w-3 right-[11px] -top-1 rotate-45 bg-neutral-800 md:bg-black'></div>
             <div className='flex flex-col py-1'>
                 <div className='py-2 px-4 hover:underline cursor-pointer text-nowrap'>Account</div>
                 <div className='py-2 px-4 hover:underline cursor-pointer text-nowrap'>Help center</div>

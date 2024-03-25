@@ -43,7 +43,7 @@ const GptSearchBar = () => {
     }
 
     return (
-        <form className='flex w-[40rem] gap-2 mx-auto p-4  bg-black'
+        <form className='flex gap-2 mx-auto p-3 bg-black w-full md:w-[40rem]'
             onSubmit={handleSubmit}>
             <input
                 ref={query}

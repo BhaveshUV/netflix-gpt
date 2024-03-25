@@ -46,6 +46,7 @@
 - Add .env file
 - Add .env file to .gitignore 
 - Memoize the api calls
+- Make the web-app responsive
 
 # Features
 

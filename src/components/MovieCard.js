@@ -7,7 +7,7 @@ const MovieCard = ({ movie }) => {
         <div className='movie-card flex-shrink-0 cursor-pointer'>
             <img alt="Movie-poster"
                 src={IMG_CDN_URL + movie.poster_path}
-                className='w-40' />
+                className='w-32 md:w-40' />
         </div>
     )
 }

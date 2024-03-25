@@ -33,11 +33,11 @@ const Header = () => {
     }, []);
 
     return (
-        <div className='fixed top-0 px-[10%] flex justify-between items-center w-full bg-gradient-to-b from-black z-10'>
+        <div className='bg-black px-[10%] pb-3 flex justify-between items-center w-full z-10 flex-col md:flex-row fixed top-0 md:bg-gradient-to-b md:from-black md:pb-0 md:bg-transparent'>
             <img src={LOGO} alt='logo'
                 className='w-40' />
             {user &&
-                <div className='relative flex gap-4'>
+                <div className='relative flex gap-4 w-full md:w-fit justify-center'>
                     {isGptSearch ? <select className='bg-neutral-700 text-white px-2' onChange={(e) => dispatch(changeCurrentLang(e.target.value))}>
                         {SUPPORTED_LANGUAGES.map(language =>
                             <option key={language.identifer}
@@ -49,7 +49,7 @@ const Header = () => {
                     <button className='bg-[#74AA9C] text-white px-3 py-1 rounded-sm font-semibold'
                         onClick={() => dispatch(toggleIsGptSearch())}>{isGptSearch ? "Homepage" : "GPT search"}</button>
                     <img alt='userIcon' src={user.photoURL ? user.photoURL : USER_AVATAR}
-                        className='cursor-pointer h-8 rounded-sm'
+                        className='cursor-pointer h-8 rounded-sm fixed top-4 right-3 md:static'
                         tabIndex={0}
                         onClick={() => setIsVisible(!isVisible)}
                         onBlur={() => setIsVisible(false)} />

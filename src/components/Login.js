@@ -71,12 +71,12 @@ const Login = () => {
         }
     }
     return (
-        <div className='min-h-[100dvh] py-20 bg-black bg-opacity-60 object-contain'>
+        <div className='min-h-[100dvh] bg-black bg-opacity-60 object-contain py-32 md:py-20'>
             <img src={BG_IMG} alt='bg'
                 className='fixed top-0 h-full w-full object-cover -z-10' />
             <Header />
             <form onSubmit={(e) => e.preventDefault()}
-                className='bg-black bg-opacity-60 flex flex-col gap-5 text-white p-16 box-content w-72 mx-auto rounded-lg'>
+                className='bg-black bg-opacity-60 flex flex-col gap-5 text-white p-16 box-content mx-auto rounded-lg md:w-72'>
                 <h1 className='text-3xl font-bold pb-8'>{isSignIn ? "Sign In" : "Sign Up"}</h1>
                 {!isSignIn &&
                     <div className='relative'>
