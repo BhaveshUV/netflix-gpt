@@ -34,6 +34,10 @@ const Login = () => {
         ePassword = validatePassword(password.current.value);
         setErrorPassword(ePassword);
 
+        if (ePassword) {
+            alert("Password must contain at least 8 characters | ABC | abc | 123 | @#$%");
+        }
+
         if (eName || eEmail || ePassword) return;
 
         if (!isSignIn) {
@@ -82,19 +86,19 @@ const Login = () => {
                     <div className='relative'>
                         <input ref={name} type='text' placeholder='Full-name'
                             className='p-2 rounded-md bg-neutral-600 w-full' />
-                        <p className='text-red-500 text-xs font-semibold px-2 absolute'>{errorName}</p>
+                        <p className='text-red-500 text-xs font-semibold px-2 py-[0.1rem] absolute'>{errorName}</p>
                     </div>
                 }
                 <div className='relative'>
                     <input ref={email} type='email' placeholder='Email'
                         className='p-2 rounded-md bg-neutral-600 w-full' />
-                    <p className='text-red-500 text-xs font-semibold px-2 absolute'>{errorEmail}</p>
+                    <p className='text-red-500 text-xs font-semibold px-2 py-[0.1rem] absolute'>{errorEmail}</p>
 
                 </div>
                 <div className='relative'>
                     <input ref={password} type='password' placeholder='Password'
                         className='p-2 rounded-md bg-neutral-600 w-full' />
-                    <p className='text-red-500 text-xs font-semibold px-2 absolute'>{errorPassword}</p>
+                    <p className='text-red-500 text-xs font-semibold px-2 py-[0.1rem] absolute'>{errorPassword}</p>
                 </div>
                 <button onClick={() => handleBtnClick()}
                     className='bg-red-600 py-2 my-4 rounded-md'>{isSignIn ? "Sign In" : "Sign Up"}</button>

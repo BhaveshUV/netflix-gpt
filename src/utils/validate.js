@@ -7,5 +7,5 @@ export const validateEmail = (email) => {
 }
 
 export const validatePassword = (password) => {
-    return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(password) ? null : "Invalid password";
+    return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*[@#$%]).{8,}$/.test(password) ? null : "Invalid password";
 }
